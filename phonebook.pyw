@@ -1,7 +1,7 @@
 '''
 copyright bibekghimire99@gmail.com
 version 1.1
-windows only
+windows and linux only
 '''
 VERSION=' BU 1.2'
 import os,sys,shelve
