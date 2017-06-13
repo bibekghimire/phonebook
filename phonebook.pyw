@@ -3,7 +3,7 @@ copyright bibekghimire99@gmail.com
 version 1.1
 windows only
 '''
-
+VERSION=' BU 1.2'
 import os,sys,shelve
 try:
     from meta import contact
@@ -51,16 +51,18 @@ scroll_bar['command']=contact_list.yview
 
 
 def directory():
-    
-    if os.path.exists(r'c:/Users/'+os.getlogin()+'/BU'):
+    if os.name=='nt':
         if os.path.exists(r'c:/Users/'+os.getlogin()+'/BU/pb'):
             path=r'c:/Users/'+os.getlogin()+'/BU/pb/'
         else :
-            path=os.mkdir(r'c:/Users/'+os.getlogin()+'/BU/pb/')
+            path=os.makedirs(r'c:/Users/'+os.getlogin()+'/BU/pb/')
+    elif os.name=='posix':
+        if os.path.exists(r'/home/'+os.getlogin()+'/BU/pb'):
+            path=r'/home/'+os.getlogin()+'/BU/pb'
+        else:
+            path=os.makedirs(r'/home/'+os.getlogin()+'/BU/pb')
     else:
-        os.mkdir(r'c:/Users/'+os.getlogin()+'/BU')
-        path=os.mkdir(r'c:/Users/'+os.getlogin()+'/BU/pb/')
-    
+        sys.exit(0)
     return path
 
 def get_ID():
@@ -172,7 +174,7 @@ def main():
     frame.master.maxsize(400,400)
     update=False
     forgot()
-    frame.master.title('contacts version BU-1.1')
+    frame.master.title('contacts'+VERSION)
     contact_list.delete(0,'end')
     search_entry.delete(0,'end')
     b1.config(text='Add New')
