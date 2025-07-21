@@ -1,9 +1,6 @@
 '''
-copyright bibekghimire99@gmail.com
-version 1.1
-windows and linux only
+phone book application
 '''
-VERSION=' BU 1.2'
 import os,sys,shelve
 try:
     from meta import contact
